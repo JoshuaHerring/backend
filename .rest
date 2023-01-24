@@ -9,3 +9,14 @@ Get http://localhost:8080/contacts/Kami HTTP/1.1
 ###
 Get http://localhost:8080/contacts/Mattie HTTP/1.1
 
+###
+Get https://contacts-t2zy.onrender.com/contacts HTTP/1.1
+
+###
+Get https://contacts-t2zy.onrender.com/contacts/Joshua HTTP/1.1
+
+###
+Get https://contacts-t2zy.onrender.com/contacts/Kami HTTP/1.1
+
+###
+Get https://contacts-t2zy.onrender.com/contacts/Mattie HTTP/1.1
