@@ -1,5 +1,6 @@
 const { json } = require('express');
 const {MongoClient} = require('mongodb');
+const ObjectId = require('mongodb').ObjectId;
 
 async function getContacts()
 {
@@ -33,7 +34,7 @@ async function getContact(firstName)
 
 async function findOne(client, firstName)
 {
-    const database = await client.db("project1").collection("contacts").find({"firstName": firstName});
+    const database = await client.db("project1").collection("contacts").find({_id: firstName});
     let contact = await database.toArray();
 
     return contact;
@@ -52,7 +53,8 @@ let getAll = async (req, res, next) =>{
 let getOne = async (req, res, next) =>{
     res.setHeader("Access-Control-Allow-Origin", "*");
     console.log(req.params.firstName);
-    let contact = await getContact(req.params.firstName);
+    const id = new ObjectId(req.params.firstName);
+    let contact = await getContact(id);
     res.json(contact);
 }
 module.exports = {getAll, getOne};
