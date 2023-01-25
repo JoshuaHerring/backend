@@ -61,6 +61,27 @@ let createContact = async (req, res) =>{
     }
 };
 
+const updateContact = async (req, res) => {
+    const id = new ObjectId(req.params.id);
+
+    const contact = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+    };
+    const client = new MongoClient(process.env.MONGODBURI);
+    const response = await client.db("project1").collection("contacts").replaceOne({_id: id}, contact);
+    console.log(response)
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    }
+    else{
+        res.status(500).json(response.error || "Some error occurred while updating the contact");
+    }
+};
+
 
 
 
@@ -78,4 +99,4 @@ let getOne = async (req, res, next) =>{
     let contact = await getContact(id);
     res.json(contact);
 }
-module.exports = {getAll, getOne, createContact};
+module.exports = {getAll, getOne, createContact, updateContact};

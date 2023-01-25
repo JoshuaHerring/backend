@@ -9,7 +9,7 @@ routes.get("/:id", contacts.getOne);
 
 routes.post('/', contacts.createContact);
 
-// routes.put('/:id', contacts.updateContact);
+routes.put('/:id', contacts.updateContact);
 
 // routes.delete('/:id', contacts.deleteContact);
 
