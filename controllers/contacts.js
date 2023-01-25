@@ -21,20 +21,20 @@ async function findAll(client)
     return(databases);
 }
 
-async function getContact(firstName)
+async function getContact(id)
 {
     const uri = process.env.MONGODBURI;
     const client = new MongoClient(uri);
 
     await client.connect();
-    let database = await findOne(client, firstName);
+    let database = await findOne(client, id);
     await client.close();
     return database;
 }
 
-async function findOne(client, firstName)
+async function findOne(client, id)
 {
-    const database = await client.db("project1").collection("contacts").find({_id: firstName});
+    const database = await client.db("project1").collection("contacts").find({_id: id});
     let contact = await database.toArray();
 
     return contact;
@@ -52,8 +52,8 @@ let getAll = async (req, res, next) =>{
 
 let getOne = async (req, res, next) =>{
     res.setHeader("Access-Control-Allow-Origin", "*");
-    console.log(req.params.firstName);
-    const id = new ObjectId(req.params.firstName);
+    console.log(req.params.id);
+    const id = new ObjectId(req.params.id);
     let contact = await getContact(id);
     res.json(contact);
 }
