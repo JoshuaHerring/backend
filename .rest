@@ -4,12 +4,24 @@ Get http://localhost:8080/contacts HTTP/1.1
 Get http://localhost:8080/contacts/63c19c3703fa30ad685babc5 HTTP/1.1
 
 ###
-Get http://localhost:8080/contacts/63c6c6ff68df119f328d1d69 HTTP/1.1
+GET http://localhost:8080/contacts/63c6c6ff68df119f328d1d69 HTTP/1.1
 
 ###
-Get http://localhost:8080/contacts/63c6c6c568df119f328d1d68 HTTP/1.1
+GET http://localhost:8080/contacts/63c6c6c568df119f328d1d68 HTTP/1.1
 
 
+
+###
+POST  http://localhost:8080/contacts HTTP/1.1
+Content-Type: application/json
+
+ {
+"firstName":"Michael",
+"lastName":"Dunn",
+"email":"Mike@test.com",
+"favoriteColor":"purple",
+"birthday":"07/12/2006"
+}
 
 
 

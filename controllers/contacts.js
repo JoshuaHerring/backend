@@ -40,6 +40,27 @@ async function findOne(client, id)
     return contact;
 }
 
+let createContact = async (req, res) =>{
+
+    const contact = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+    };
+
+    const client = new MongoClient(process.env.MONGODBURI);
+    const response = await client.db("project1").collection("contacts").insertOne(contact);
+
+    if(response.acknowledged) {
+        res.status(201).json(response);
+    }
+    else{
+        res.status(500).json(response.error || 'Some error occured while creating the contact.');
+    }
+};
+
 
 
 
@@ -57,4 +78,4 @@ let getOne = async (req, res, next) =>{
     let contact = await getContact(id);
     res.json(contact);
 }
-module.exports = {getAll, getOne};
+module.exports = {getAll, getOne, createContact};

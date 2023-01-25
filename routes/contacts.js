@@ -7,11 +7,11 @@ const contacts = require("../controllers/contacts");
 routes.get("/", contacts.getAll);
 routes.get("/:id", contacts.getOne);
 
-// router.post('/', contactsController.createContact);
+routes.post('/', contacts.createContact);
 
-// router.put('/:id', contactsController.updateContact);
+// routes.put('/:id', contacts.updateContact);
 
-// router.delete('/:id', contactsController.deleteContact);
+// routes.delete('/:id', contacts.deleteContact);
 
 
 module.exports = routes;
