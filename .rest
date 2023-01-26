@@ -51,11 +51,6 @@ Get https://contacts-t2zy.onrender.com/contacts HTTP/1.1
 ###
 Get https://contacts-t2zy.onrender.com/contacts/63c19c3703fa30ad685babc5 HTTP/1.1
 
-###
-Get https://contacts-t2zy.onrender.com/contacts/63c6c6ff68df119f328d1d69 HTTP/1.1
-
-###
-Get https://contacts-t2zy.onrender.com/contacts/63c6c6c568df119f328d1d68 HTTP/1.1
 
 ###
 POST  http://contacts-t2zy.onrender.com/contacts HTTP/1.1
@@ -70,7 +65,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://contacts-t2zy.onrender.com/contacts/63d1ccf082c20db3439c5f19 HTTP/1.1
+PUT http://contacts-t2zy.onrender.com/contacts/63d1cf2f2e1ada4375a6802b HTTP/1.1
 Content-Type: application/json
 
 {
@@ -82,4 +77,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://contacts-t2zy.onrender.com/contacts/63d1ccf082c20db3439c5f19 HTTP/1.1
+DELETE http://contacts-t2zy.onrender.com/contacts/63d1cf2f2e1ada4375a6802b HTTP/1.1
