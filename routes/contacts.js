@@ -11,7 +11,7 @@ routes.post('/', contacts.createContact);
 
 routes.put('/:id', contacts.updateContact);
 
-// routes.delete('/:id', contacts.deleteContact);
+routes.delete('/:id', contacts.deleteContact);
 
 
 module.exports = routes;

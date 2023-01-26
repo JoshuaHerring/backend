@@ -82,6 +82,21 @@ const updateContact = async (req, res) => {
     }
 };
 
+const deleteContact = async (req, res) => {
+    const id = new ObjectId(req.params.id);
+
+    const client = new MongoClient(process.env.MONGODBURI);
+    const response = await client.db("project1").collection("contacts").deleteOne({_id: id});
+
+    if (response.deletedCount > 0)
+    {
+        res.status(204).send();
+    }
+    else{
+        res.status(500).json(response.error || "Some error occured while deleting the contact");
+    }
+};
+
 
 
 
@@ -99,4 +114,4 @@ let getOne = async (req, res, next) =>{
     let contact = await getContact(id);
     res.json(contact);
 }
-module.exports = {getAll, getOne, createContact, updateContact};
+module.exports = {getAll, getOne, createContact, updateContact, deleteContact};
