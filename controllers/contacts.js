@@ -41,8 +41,7 @@ async function findOne(client, id)
 }
 
 let createContact = async (req, res) =>{
-    res.setHeader("Access-Control-Allow-Origin", "*");
-
+    
     const contact = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -50,11 +49,12 @@ let createContact = async (req, res) =>{
         favoriteColor: req.body.favoriteColor,
         birthday: req.body.birthday
     };
-
+    
     const client = new MongoClient(process.env.MONGODBURI);
     const response = await client.db("project1").collection("contacts").insertOne(contact);
-
+    
     if(response.acknowledged) {
+        res.setHeader("Access-Control-Allow-Origin", "*");
         res.status(201).json(response);
     }
     else{
@@ -63,9 +63,8 @@ let createContact = async (req, res) =>{
 };
 
 const updateContact = async (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
     const id = new ObjectId(req.params.id);
-
+    
     const contact = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -77,6 +76,7 @@ const updateContact = async (req, res) => {
     const response = await client.db("project1").collection("contacts").replaceOne({_id: id}, contact);
     console.log(response)
     if (response.modifiedCount > 0) {
+        res.setHeader("Access-Control-Allow-Origin", "*");
         res.status(204).send();
     }
     else{
@@ -85,15 +85,15 @@ const updateContact = async (req, res) => {
 };
 
 const deleteContact = async (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-
+    
     const id = new ObjectId(req.params.id);
-
+    
     const client = new MongoClient(process.env.MONGODBURI);
     const response = await client.db("project1").collection("contacts").deleteOne({_id: id});
-
+    
     if (response.deletedCount > 0)
     {
+        res.setHeader("Access-Control-Allow-Origin", "*");
         res.status(200).send();
     }
     else{
