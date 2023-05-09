@@ -41,6 +41,7 @@ async function findOne(client, id)
 }
 
 let createContact = async (req, res) =>{
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
     const contact = {
         firstName: req.body.firstName,
@@ -62,6 +63,7 @@ let createContact = async (req, res) =>{
 };
 
 const updateContact = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const id = new ObjectId(req.params.id);
 
     const contact = {
@@ -83,6 +85,8 @@ const updateContact = async (req, res) => {
 };
 
 const deleteContact = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     const id = new ObjectId(req.params.id);
 
     const client = new MongoClient(process.env.MONGODBURI);
